@@ -1,4 +1,4 @@
-# Aplicación React  dinámica HTTP con React Router  y Hooks
+# Aplicación React  dinámica HTTP con React Router  y Hooks 🔗 💡
 
 
 El objetivo del ejercicio es la construcción de una aplicación web React.js con diferentes components que 
@@ -48,6 +48,12 @@ del navegador. Si existe, se accederá al listado de posts. En caso contrario, s
 # JERARQUIA DE COMPONENTES
 
 ![Jerarquia de Componentes](https://i.imgur.com/MxpPiN8.jpg)
+
+## Built with ⛏
+- [React](https://es.reactjs.org/)
+- [Pexels](https://pexels.com/) // Todas las imagenes utilizadas en la aplicación tiene licencia Creative Commons.
+- [Bootstrap5](https://https://getbootstrap.com/)
+- [React-Router](https://reactrouter.com/)
 
 
 
