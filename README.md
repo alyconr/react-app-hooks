@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Aplicación React  dinámica HTTP con React Router  y Hooks
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+El objetivo del ejercicio es la construcción de una aplicación web React.js con diferentes components que 
+tenga como resultado la siguiente interfaz de usuario (Mobile first):
 
-In the project directory, you can run:
+![Aplicación web react](https://i.imgur.com/77Xn2An.jpg)
 
-### `npm start`
+En esta ocasión, todos los datos (posts, perfil de usuario) deberán obtenerse por HTTP desde el API 
+expuesto en https://thre-points.herokuapp.com/api . Junto al enunciado del ejercicio puede encontrarse 
+una colección Postman como documentación sobre los diferentes endpoints.
+Todos los componentes React deberán ser funcionales, haciendo uso de los hooks useState y useEffect 
+para manejar el estado y ciclo de vida del componente.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Además, las diferentes secciones se mostrarán bajo una ruta del navegador, utilizando la biblioteca React 
+Router:
 
-### `npm test`
+![Esquema web react-router](https://i.imgur.com/ES5OdMj.jpg)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+La aplicación contará con autenticación HTTP basada en Bearer token.
+Si cualquier petición HTTP devuelve código 401, deberá borrarse el localStorage del navegador, limpiar el 
+estado currentUser y redirigir al usuario a la ruta /login
+- Al escribir sobre la barra de búsqueda se deberán mostrar solo los posts que contengan la cadena 
+de búsqueda en su contenido
+- Los posts deberán mostrarse después de haber cargado la interfaz. Mostrando el texto 
+“Loading…” durante el tiempo de carga.
+- El botón “Me Gusta” deberá incrementar el contador de likes sobre el post utilizando el API HTTP
+- Al pulsar sobre el icono de perfil el usuario será redirigido a la ruta /profile
 
-### `npm run build`
+## Autenticación
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Al pulsar sobre “login” deberán enviarse los datos del formulario con una petición POST a la siguiente url: 
+https://three-points.herokuapp.com/api/login
+Body: { “username”: “…”, “password”: “…” }
+Content-Type: application/json
+Usuario registrado para pruebas:
+{ “username”: “john”, “password”: “P4ssW0rd!#” }
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Si la petición HTTP devuelve un código 200 (éxito), se guardará el token del usuario en el localStorage del 
+navegador y se mostrará el listado de posts. En caso contrario, se activará el estado de error y se mostrará 
+el mensaje de error en pantalla.
+El resto de peticiones HTTP deberán usar la cabecera “Authorization: Bearer {token}” para resolver la 
+autenticación.
+Cada vez que se inicie la aplicación web se deberá verificar si existe el token del usuario en el localStorage 
+del navegador. Si existe, se accederá al listado de posts. En caso contrario, se mostrará la pantalla de login. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# JERARQUIA DE COMPONENTES
 
-### `npm run eject`
+![Jerarquia de Componentes](https://i.imgur.com/MxpPiN8.jpg)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
