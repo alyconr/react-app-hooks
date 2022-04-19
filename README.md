@@ -28,7 +28,7 @@ de búsqueda en su contenido
 - El botón “Me Gusta” deberá incrementar el contador de likes sobre el post utilizando el API HTTP
 - Al pulsar sobre el icono de perfil el usuario será redirigido a la ruta /profile
 
-## Autenticación
+## Autenticación 🆗
 
 Al pulsar sobre “login” deberán enviarse los datos del formulario con una petición POST a la siguiente url: 
 https://three-points.herokuapp.com/api/login
